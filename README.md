@@ -51,6 +51,12 @@ Um projeto react, utilizando quase que estritamente hooks
 - material-ui Styles utilizando make styles, porém degrada o desempenho, logo migrando para styled components ou styles inline como constantes.
 - Classes services separadas
 
+## TODOs and FIXME
+
+ - Refactor em alguns hooks
+ - Add useCallback em alguns lugares
+ - FIXME nos input uncontrolled no react strict 
+
 
 #### Rodando
 
