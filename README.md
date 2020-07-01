@@ -53,6 +53,7 @@ Um projeto react, utilizando quase que estritamente hooks
 
 ## TODOs and FIXME
 
+ - Foi desabilitado a barra de rolagem, estoou forcando o scroll do mouse ou então swipe
  - Refactor em alguns hooks
  - Add useCallback em alguns lugares
  - FIXME nos input uncontrolled no react strict 
