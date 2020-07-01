@@ -1,4 +1,4 @@
-#JS Well Dev Playground - Marvel API
+# JS Well Dev Playground - Marvel API
 
 (Readme está em PT-BR, código em inglês)
 
