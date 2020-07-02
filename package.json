@@ -4,7 +4,7 @@
   "email": "well.oliveira.snt@gmail.com",
   "version": "1.0.0",
   "engines": {
-    "node": ">=10",
+    "node": ">=14",
     "yarn": "^1.12"
   },
   "devDependencies": {
@@ -26,6 +26,7 @@
     "@types/material-ui": "^0.21.7",
     "babel-jest": "^24.9.0",
     "babel-plugin-inline-react-svg": "^1.0.1",
+    "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "cypress": "^4.9.0",
     "danger": "^9.1.5",
@@ -95,9 +96,7 @@
     "test": "jest --coverage",
     "web:start": "yarn workspace well-dev-playground-react-ui start",
     "web:firebase:deploy": "yarn workspace well-dev-playground-react-ui build && firebase deploy",
-    "app:android:start": "yarn workspace well-dev-playground-app start:android",
-    "app:ios:start": "yarn workspace well-dev-playground-app start:ios",
-    "start:server": "yarn workspace well-dev-playground-server start"
+    "coveralls": "jest --coverage && cat ./.jest-coverage/lcov.info | coveralls"
   },
   "workspaces": {
     "packages": [
