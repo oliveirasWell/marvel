@@ -3,7 +3,6 @@ node_js:
   - 14
 install:
   - yarn
-  - yarn add firebase
 script:
   - yarn eslint:fix
   - yarn storybook:build
