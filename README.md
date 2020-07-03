@@ -1,7 +1,10 @@
 # JS Well Dev Playground - Marvel API
 
+
 [![Build Status](https://travis-ci.org/oliveirasWell/marvel.svg?branch=master)](https://travis-ci.org/oliveirasWell/marvel)
 [![Coverage Status](https://coveralls.io/repos/github/oliveirasWell/marvel/badge.svg?branch=master)](https://coveralls.io/github/oliveirasWell/marvel?branch=master)
+
+[Online avaliable here](https://well-dev-playground-react-ui.web.app/home)
 
 (Readme está em PT-BR, código em inglês)
 
@@ -13,9 +16,6 @@
 - yarn > 1.12
 - Docker (Optional)
 
-# Online avaliable here
-
-https://well-dev-playground-react-ui.web.app/home
 
 # Descrição
 
