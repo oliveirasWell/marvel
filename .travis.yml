@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - 14
 script:
-  - yanr install
   - yarn eslint:fix
   - yarn storybook:build
   - yarn build:docs:html
