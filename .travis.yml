@@ -9,13 +9,7 @@ script:
   - yarn storybook:build
   - yarn build:docs:html
   - yarn coveralls
-
-cache:
-  yarn: true
-deploy:
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
+  - yarn web:firebase:deploy
 
 notifications:
   email:
