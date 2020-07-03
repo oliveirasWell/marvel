@@ -95,7 +95,7 @@
     "lint:staged": "lint-staged",
     "test": "jest --coverage",
     "web:start": "yarn workspace well-dev-playground-react-ui start",
-    "web:firebase:deploy": "yarn workspace well-dev-playground-react-ui build && firebase deploy",
+    "web:firebase:deploy": "yarn workspace well-dev-playground-react-ui build && firebase deploy --only hosting",
     "coveralls": "jest --coverage && cat ./.jest-coverage/lcov.info | coveralls"
   },
   "workspaces": {
