@@ -3,14 +3,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
 import SearchIcon from '@material-ui/icons/Search';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useTheme } from '@material-ui/styles';
 import { useMediaQuery } from '@material-ui/core';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Button from '@material-ui/core/Button';
 import { routes } from '../../routes/routes';
 import { Loading } from '../../components/Loading';
@@ -18,8 +15,8 @@ import { RoutesList } from '../../routes/RoutesList/RoutesList';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import logo from '../../assets/marvel-logo.png';
 import { getCurrentNavigation } from './AppFunctions';
-import { useAppStyles } from './AppStyles';
 import { MenuDrawer } from '../../components/MenuDrawer/MenuDrawer';
+import { AppBottomNav } from './AppBottomNav';
 
 const MainDiv = styled.div`
   display: flex;
@@ -35,7 +32,15 @@ const AppContainer = styled.div`
   margin-top: 70px;
 `;
 
-const style = { maxHeight: 66 };
+const LogoImg = styled.img`
+  max-height: 66px;
+`;
+
+const Title = styled.div`
+  flex-grow: 1;
+  text-align: center;
+  padding-right: ${({ mobile }) => mobile && 32}px;
+`;
 
 const App = () => {
   const location = useLocation();
@@ -43,7 +48,6 @@ const App = () => {
   const currentNavigation = getCurrentNavigation(location);
   const theme = useTheme();
   const mobile = !useMediaQuery(theme.breakpoints.up('sm'));
-  const classes = useAppStyles();
   const [, height] = useWindowSize();
   const [open, setOpen] = useState(false);
 
@@ -55,67 +59,53 @@ const App = () => {
     setOpen(false);
   };
 
+  const onClickSearch = () => routes.ADVANCED_SEARCH.redirect(history);
+  const onClickImage = () => routes.LIST.redirect(history);
+  const onChange = (event, newValue) => routes[newValue].redirect(history);
+
   return (
-    <MainDiv height={height}>
-      <div className={classes.rootAppBar}>
-        <AppBar variant="outlined" position="fixed">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleMenuClick}
-            >
-              <MenuIcon />
-            </IconButton>
-            <div className={classes.title}>
-              <img
-                src={logo}
-                alt="Logo"
-                style={style}
-                onClick={() => routes.LIST.redirect(history)}
-              />
-            </div>
-            {!mobile && (
-              <Button
-                aria-label="search"
+    <ThemeProvider theme={theme}>
+      <MainDiv height={height}>
+        <div>
+          <AppBar variant="outlined" position="fixed">
+            <Toolbar>
+              <IconButton
+                edge="start"
                 color="inherit"
-                onClick={() => routes.ADVANCED_SEARCH.redirect(history)}
+                aria-label="menu"
+                onClick={handleMenuClick}
               >
-                <SearchIcon />
-              </Button>
-            )}
-          </Toolbar>
-        </AppBar>
-      </div>
-      <AppContainer>
-        <Suspense fallback={<Loading id="loading" />}>
-          <RoutesList />
-        </Suspense>
-      </AppContainer>
-      <MenuDrawer open={open} handleClose={handleClose} />
-      {mobile && (
-        <BottomNavigation
-          value={currentNavigation}
-          classes={{
-            root: classes.root,
-          }}
-          onChange={(event, newValue) => routes[newValue].redirect(history)}
-          showLabels
-        >
-          <BottomNavigationAction
-            label="Comics"
-            icon={<MenuBookIcon />}
-            value="LIST"
+                <MenuIcon />
+              </IconButton>
+              <Title mobile={mobile}>
+                <LogoImg src={logo} alt="Logo" onClick={onClickImage} />
+              </Title>
+              {!mobile && (
+                <Button
+                  aria-label="search"
+                  color="inherit"
+                  onClick={onClickSearch}
+                >
+                  <SearchIcon />
+                </Button>
+              )}
+            </Toolbar>
+          </AppBar>
+        </div>
+        <AppContainer>
+          <Suspense fallback={<Loading id="loading" />}>
+            <RoutesList />
+          </Suspense>
+        </AppContainer>
+        <MenuDrawer open={open} handleClose={handleClose} />
+        {mobile && (
+          <AppBottomNav
+            onChange={onChange}
+            currentNavigation={currentNavigation}
           />
-          <BottomNavigationAction
-            label="Search"
-            icon={<SearchIcon />}
-            value="ADVANCED_SEARCH"
-          />
-        </BottomNavigation>
-      )}
-    </MainDiv>
+        )}
+      </MainDiv>
+    </ThemeProvider>
   );
 };
 

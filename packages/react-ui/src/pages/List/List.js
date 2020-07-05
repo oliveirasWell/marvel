@@ -5,13 +5,14 @@ import { useComicsPaginate } from '../../hooks/useComicsPaginate';
 import { LoadingTernary } from '../../components/LoadingTernary';
 import { routes } from '../../routes/routes';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
-import { ComicCard } from './Card/ComicCard';
+import { ComicCard } from './ComicCard';
 import { PaginationHeader } from '../../components/PaginationHeader/PaginationHeader';
+import { filterResults } from './listFunctions';
 
 const List = () => {
   const history = useHistory();
   const [comics, setComics] = useState([]);
-  const [filter, setFilter] = useState(undefined);
+  const [filter, setFilter] = useState('');
 
   const {
     results,
@@ -26,29 +27,6 @@ const List = () => {
     setFilter(event.target.value);
   };
 
-  useEffect(() => {
-    setComics(
-      filter
-        ? (results || []).filter(comic => {
-            const searchString = filter.toLowerCase();
-
-            const t = (comic?.characters?.items || []).find(
-              item => item.name.toLowerCase().indexOf(searchString) > -1
-            );
-
-            const t2 = (comic?.creators?.items || []).find(
-              item => item.name.toLowerCase().indexOf(searchString) > -1
-            );
-
-            const t3 =
-              (comic?.title || {}).toLowerCase().indexOf(searchString) > -1;
-
-            return t || t2 || t3;
-          })
-        : results
-    );
-  }, [results, filter]);
-
   const _handleKeyDown = e => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -59,6 +37,10 @@ const List = () => {
   const clearSearch = () => {
     setFilter('');
   };
+
+  useEffect(() => {
+    setComics(filterResults({ filter, results }));
+  }, [results, filter]);
 
   return (
     <Grid container spacing={0}>
@@ -87,7 +69,7 @@ const List = () => {
           <Grid container spacing={0}>
             {!loading &&
               (comics || []).map(comic => (
-                <Grid item xs={12} xl={4} md={4} key={`${comic.id}`}>
+                <Grid item xs={12} xl={3} md={3} key={`${comic.id}`}>
                   <ComicCard
                     title={comic.title}
                     authors={(comic?.creators?.items ?? [])

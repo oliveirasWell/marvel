@@ -5,31 +5,41 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { EmptyState } from '../../../components/EmptyState/EmptyState';
-import { CharacterRow } from './CharacterRow/CharacterRow';
+import { CharacterRowPure } from './CharacterRow';
 
-const style = { width: '100%' };
+const StyledTable = styled(Table)`
+  width: 100%;
+`;
 
-export const useStyles = makeStyles(theme => ({
-  root: {
-    margin: theme.spacing(1),
-  },
-}));
+const StyledPaper = styled(Paper)`
+  margin: ${props => props && props.theme && props.theme.spacing(1)}px;
+`;
 
-const CharacterTable = ({ results }) => {
-  const classes = useStyles();
+const CharacterRowWrapper = ({ urls, id, name, thumbnail }) => {
+  const find = urls.find(({ type }) => type === 'detail');
+  const { url } = find || {};
 
   return (
-    <Paper
-      component="form"
-      variant="outlined"
-      elevation={0}
-      square
-      className={classes.root}
-    >
-      <Table style={style}>
+    <CharacterRowPure key={id} name={name} thumbnail={thumbnail} url={url} />
+  );
+};
+
+CharacterRowWrapper.propTypes = {
+  urls: PropTypes.string,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  thumbnail: PropTypes.object,
+};
+
+const CharacterTable = ({ results }) => {
+  const isEmpty = results?.length === 0;
+
+  return (
+    <StyledPaper component="form" variant="outlined" elevation={0} square>
+      <StyledTable>
         <TableHead>
           <TableRow>
             <TableCell />
@@ -38,22 +48,11 @@ const CharacterTable = ({ results }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {results?.length === 0 && <EmptyState />}
-          {(results || []).map(character => {
-            const find = character?.urls.find(({ type }) => type === 'detail');
-            const { url } = find || {};
-
-            return (
-              <CharacterRow
-                key={character.id}
-                character={character}
-                url={url}
-              />
-            );
-          })}
+          {isEmpty && <EmptyState />}
+          {(results || []).map(CharacterRowWrapper)}
         </TableBody>
-      </Table>
-    </Paper>
+      </StyledTable>
+    </StyledPaper>
   );
 };
 

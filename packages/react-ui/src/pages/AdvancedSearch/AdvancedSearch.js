@@ -7,7 +7,7 @@ import { PaginationHeader } from '../../components/PaginationHeader/PaginationHe
 import { CharacterTable } from './CharacterTable/CharacterTable';
 
 const AdvancedSearch = () => {
-  const [nameStartsWith, setNameStartsWith] = useState(undefined);
+  const [nameStartsWith, setNameStartsWith] = useState('');
   const [searchNameStartsWith, setSearchNameStartsWith] = useState(undefined);
 
   const handleClickInput = () => {

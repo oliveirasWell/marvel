@@ -5,8 +5,9 @@ module.exports = {
     '<rootDir>/packages/(?:.+?)/lib/',
     '<rootDir>/packages/(?:.+?)/node_modules/',
     '<rootDir>/node_modules/',
+    '\\*resultsTestResource.js$',
   ],
-  coverageReporters: ['html', 'text', "lcov" ],
+  coverageReporters: ['html', 'text', 'lcov'],
   coverageThreshold: {
     global: {
       branches: 20,
@@ -16,6 +17,7 @@ module.exports = {
     },
   },
   transform: {
+    '^.+\\.json5$': 'json5-jest',
     '^.+\\.js$': 'babel-jest',
     '.+\\.(css|styl|less|sass|scss)$': 'jest-transform-css',
     '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$':
@@ -26,6 +28,8 @@ module.exports = {
     '<rootDir>/packages/(?:.+?)/node_modules/',
     '<rootDir>/cypress/',
     '\\*.(css|jpg|png|scss|less|sass)$',
+    '\\*resultsTestResource.js$',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+  moduleFileExtensions: ['json', 'js'],
 };

@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const style = { maxWidth: '100px' };
+const ComicImg = styled.img`
+  max-width: 100px;
+  margin: ${({ theme }) => theme.spacing(1 / 2)}px;
+`;
 
 const ComicImages = ({ comic }) =>
   (comic?.images ?? []).map(({ path, extension }, index) => (
-    <img
+    <ComicImg
       key={`${comic.id}--image-${index}`}
       src={`${path}.${extension}`}
       alt="thumbnail"
-      style={style}
       onClick={() => window.open(`${path}.${extension}`)}
     />
   ));

@@ -6,11 +6,14 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { routes } from '../../routes/routes';
 import { DivFullList } from './MenuStyles';
 import logo from '../../assets/marvel-logo.png';
 
-const style = { maxHeight: 66 };
+const MenuImg = styled.img`
+  max-height: 66px;
+`;
 
 export const MenuDrawer = ({ open, handleClose }) => {
   const history = useHistory();
@@ -20,10 +23,9 @@ export const MenuDrawer = ({ open, handleClose }) => {
       <DivFullList role="presentation" onClick={handleClose}>
         <List>
           <ListItem button>
-            <img
+            <MenuImg
               src={logo}
               alt="Logo"
-              style={style}
               onClick={() => routes.LIST.redirect(history)}
             />
           </ListItem>

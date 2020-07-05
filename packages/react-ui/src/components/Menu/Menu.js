@@ -1,11 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useTheme } from '@material-ui/styles';
+import styled from 'styled-components';
 import { routes } from '../../routes/routes';
+
+const MenuItem = styled.div`
+  font-size: 1.25rem;
+  margin-top: ${({ theme }) => theme.spacing(1)}px;
+  font-weight: ${({ fontWeight }) => fontWeight};
+`;
 
 const Menu = () => {
   const history = useHistory();
-  const theme = useTheme();
 
   return (
     <>
@@ -13,22 +18,17 @@ const Menu = () => {
         .filter(({ menu }) => !!menu)
         .map((route, index) => {
           const { path, title } = route;
-          const style = {
-            fontSize: '1.25rem',
-            fontWeight: 300 + 200 * index,
-            marginTop: theme.spacing(1),
-          };
 
           return (
-            <div
+            <MenuItem
               key={`${path}*menu`}
               onClick={() => route.redirect(history)}
               role="menuitem"
               tabIndex={index}
-              style={style}
+              fontWeight={300 + 200 * index}
             >
               {title}
-            </div>
+            </MenuItem>
           );
         })}
     </>

@@ -1,12 +1,35 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
-import { useStyles } from './SearchBarStyles';
+import {
+  Divider as DividerMui,
+  InputBase as InputBaseMui,
+  IconButton as IconButtonMui,
+  Paper as PaperMui,
+} from '@material-ui/core';
+
+import SearchIcon from '@material-ui/icons/Search';
+
+const Paper = styled(PaperMui)`
+  margin: ${props => props && props.theme && props.theme.spacing(1)}px;
+  display: flex;
+  align-items: center;
+`;
+
+const Divider = styled(DividerMui)`
+  height: 28px;
+  margin: 4px;
+`;
+
+const IconButton = styled(IconButtonMui)`
+  padding: 10px;
+`;
+
+const InputBase = styled(InputBaseMui)`
+  margin-left: ${props => props && props.theme && props.theme.spacing(1)}px;
+  flex: 1;
+`;
 
 const SearchBar = ({
   value,
@@ -15,44 +38,25 @@ const SearchBar = ({
   onSearchClick,
   onCleanClick,
   placeholder,
-}) => {
-  const classes = useStyles();
-
-  return (
-    <Paper
-      component="form"
-      variant="outlined"
-      elevation={0}
-      square
-      className={classes.root}
-    >
-      <InputBase
-        id="search"
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        className={classes.input}
-        placeholder={placeholder}
-        inputProps={{ 'aria-label': 'search' }}
-      />
-      <IconButton
-        className={classes.iconButton}
-        aria-label="search"
-        onClick={onSearchClick}
-      >
-        <SearchIcon />
-      </IconButton>
-      <Divider className={classes.divider} orientation="vertical" />
-      <IconButton
-        onClick={onCleanClick}
-        className={classes.iconButton}
-        aria-label="directions"
-      >
-        <CloseIcon />
-      </IconButton>
-    </Paper>
-  );
-};
+}) => (
+  <Paper component="form" variant="outlined" elevation={0} square>
+    <InputBase
+      id="search"
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder={placeholder}
+      inputProps={{ 'aria-label': 'search' }}
+    />
+    <IconButton aria-label="search" onClick={onSearchClick}>
+      <SearchIcon />
+    </IconButton>
+    <Divider orientation="vertical" />
+    <IconButton onClick={onCleanClick} aria-label="directions">
+      <CloseIcon />
+    </IconButton>
+  </Paper>
+);
 
 SearchBar.propTypes = {
   value: PropTypes.string,

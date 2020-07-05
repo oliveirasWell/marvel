@@ -3,15 +3,19 @@ import { useHistory, useParams } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import styled from 'styled-components';
 import { useComicById } from '../../hooks/useComicById';
 import { LoadingTernary } from '../../components/LoadingTernary';
 import { routes } from '../../routes/routes';
-import { ComicImages } from '../../components/ComicImages/ComicImages';
+import { ComicImages } from '../../components/ComicImages';
 import { ComicCreators } from './ComicCreators/ComicCreators';
 import { ComicCharacters } from './ComicCharacters.js/ComicCharacters';
 
-const style1 = { maxWidth: '100%' };
 const style = { padding: 16 };
+
+const DetailImg = styled.img`
+  max-width: 100%;
+`;
 
 const Details = () => {
   const { id } = useParams();
@@ -30,10 +34,9 @@ const Details = () => {
     <Grid spacing={0} container>
       <LoadingTernary loading={loading}>
         <Grid item xs={12} md={4}>
-          <img
+          <DetailImg
             src={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`}
             alt="thumbnail"
-            style={style1}
           />
         </Grid>
         <Grid item container xs={12} md={8} spacing={1} style={style}>

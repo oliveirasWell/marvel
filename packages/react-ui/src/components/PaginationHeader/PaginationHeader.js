@@ -1,25 +1,25 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import { Paper as PaperMui } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import styled from 'styled-components';
 import { PAGE_SIZE } from '../../constants/apiConstants';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    margin: theme.spacing(1),
-    minHeight: 44,
-  },
-  divMargin: {
-    minHeight: 44,
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  typography: {
-    alignSelf: 'center',
-  },
-}));
+const Container = styled.div`
+  min-height: 48px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const TypographyStyled = styled(Typography)`
+  align-self: center;
+`;
+
+const Paper = styled(PaperMui)`
+  margin: ${props => props?.theme && props.theme.spacing(1)}px;
+  min-height: 48px;
+`;
 
 const PaginationHeader = ({
   results,
@@ -29,21 +29,14 @@ const PaginationHeader = ({
   getNext,
   totalText,
 }) => {
-  const classes = useStyles();
   const currentPage = (page + 1) * PAGE_SIZE;
   const totalString = `${
     currentPage > total ? total : currentPage
   }/${total} ${totalText}`;
 
   return (
-    <Paper
-      component="form"
-      variant="outlined"
-      elevation={0}
-      square
-      className={classes.root}
-    >
-      <div className={classes.divMargin}>
+    <Paper component="form" variant="outlined" elevation={0} square>
+      <Container>
         <Button
           type="button"
           onClick={getPrevious}
@@ -52,9 +45,7 @@ const PaginationHeader = ({
           Previous
         </Button>
         {results && (
-          <Typography variant="button" className={classes.typography}>
-            {totalString}
-          </Typography>
+          <TypographyStyled variant="button">{totalString}</TypographyStyled>
         )}
         <Button
           type="button"
@@ -63,7 +54,7 @@ const PaginationHeader = ({
         >
           Next
         </Button>
-      </div>
+      </Container>
     </Paper>
   );
 };
