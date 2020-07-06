@@ -14,5 +14,5 @@ notifications:
   email:
     recipients:
       - well.oliveira.snt@gmail.com.br
-    on_success: always # default: change
-    on_failure: always # default: always
+    on_success: never
+    on_failure: always
