@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import { AlertContextProvider } from './context/Alert/AlertContextProvider';
 import theme from './utils/theme';
 import './index.css';
+import { StyledComponentsThemeProvider } from './components/styled/StyledComponentsThemeProvider';
 
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_TOKEN,
@@ -19,7 +20,9 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <AlertContextProvider>
         <Router>
-          <App />
+          <StyledComponentsThemeProvider>
+            <App />
+          </StyledComponentsThemeProvider>
         </Router>
       </AlertContextProvider>
     </ThemeProvider>

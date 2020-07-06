@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, getNodeText } from '@testing-library/react';
-import { ThemeProvider } from '@material-ui/styles';
+import { getNodeText, render } from '@testing-library/react';
 import { Menu } from './Menu';
 import { routes } from '../../routes/routes';
-import theme from '../../utils/theme';
+import { MockedProvidersTest } from '../../utils/test/MockThemeTest';
 
 test('renders only menus item that `menu` field are true  ', () => {
   const expected = Object.values(routes)
@@ -11,9 +10,9 @@ test('renders only menus item that `menu` field are true  ', () => {
     .map(r => r.title);
 
   const { getAllByRole } = render(
-    <ThemeProvider theme={theme}>
+    <MockedProvidersTest>
       <Menu />
-    </ThemeProvider>
+    </MockedProvidersTest>
   );
   const menuItems = getAllByRole(/menuitem/i);
   const renderedItems = menuItems.map(i => getNodeText(i));
@@ -27,9 +26,9 @@ test('not renders menus item that `menu` field are false', () => {
     .map(r => r.title);
 
   const { getAllByRole } = render(
-    <ThemeProvider theme={theme}>
+    <MockedProvidersTest>
       <Menu />
-    </ThemeProvider>
+    </MockedProvidersTest>
   );
   const menuItems = getAllByRole(/menuitem/i);
   const renderedItems = menuItems.map(i => getNodeText(i));

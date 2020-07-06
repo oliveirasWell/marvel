@@ -1,20 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
 import App from './App';
-import { AlertContextProvider } from '../../context/Alert/AlertContextProvider';
-import theme from '../../utils/theme';
+import { MockedProvidersTest } from '../../utils/test/MockThemeTest';
 
 test('renders learn react link', () => {
   const { getByTestId } = render(
-    <ThemeProvider theme={theme}>
-      <AlertContextProvider>
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      </AlertContextProvider>
-    </ThemeProvider>
+    <MockedProvidersTest>
+      <App />
+    </MockedProvidersTest>
   );
   const linkElement = getByTestId(/loading/i);
 
