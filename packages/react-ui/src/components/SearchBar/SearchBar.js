@@ -8,7 +8,6 @@ import {
   IconButton as IconButtonMui,
   Paper as PaperMui,
 } from '@material-ui/core';
-
 import SearchIcon from '@material-ui/icons/Search';
 
 const Paper = styled(PaperMui)`

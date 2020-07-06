@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AlertContext } from '../context/Alert/AlertContext';
+import { AlertContext } from 'context/Alert/AlertContext';
 import { MarvelComicsApiService } from '../services/MarvelComicsApiService';
 import { PAGE_SIZE } from '../constants/apiConstants';
 

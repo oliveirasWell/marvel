@@ -7,9 +7,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { routes } from '../../routes/routes';
+import logo from 'assets/marvel-logo.png';
+import { routes } from 'routes/routes';
 import { DivFullList } from './MenuStyles';
-import logo from '../../assets/marvel-logo.png';
 
 const MenuImg = styled.img`
   max-height: 66px;

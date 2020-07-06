@@ -39,4 +39,4 @@ const NotFound = () => (
   </Container>
 );
 
-export default NotFound;
+export { NotFound };

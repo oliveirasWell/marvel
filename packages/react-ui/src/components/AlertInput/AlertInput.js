@@ -1,6 +1,6 @@
 import React from 'react';
-import { AlertContext } from '../../context/Alert/AlertContext';
-import { GenericInput } from '../GenericInput';
+import { AlertContext } from 'context/Alert/AlertContext';
+import { GenericInput } from 'components/GenericInput';
 
 const AlertInput = () => {
   const { addAlert } = React.useContext(AlertContext);

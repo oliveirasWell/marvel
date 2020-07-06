@@ -1,0 +1,1 @@
+export { PaginationHeader } from './PaginationHeader';

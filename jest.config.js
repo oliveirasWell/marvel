@@ -32,4 +32,11 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
   moduleFileExtensions: ['json', 'js'],
+  moduleDirectories: [
+    'node_modules',
+    'packages/shared/node_modules',
+    'packages/react-ui/node_modules',
+    'packages/react-ui/src',
+    'packages/shared/src',
+  ],
 };

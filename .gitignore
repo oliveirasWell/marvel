@@ -89,3 +89,6 @@ fabric.properties
 /coverage/
 /.jest-coverage/
 /.jest-cache/
+
+.firebase
+.idea

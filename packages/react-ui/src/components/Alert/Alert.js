@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { textToUpper } from '@oliveiras-well/es-shared';
-import Chip from '@material-ui/core/Chip';
+import { Chip as ChipMui } from '@material-ui/core';
+import styled from 'styled-components';
 
-const style = { backgroundColor: 'red' };
+const Chip = styled(ChipMui)`
+  background-color: red;
+`;
 
 export const Alert = ({ text = 'Alerta', onClick: onClickInput, index }) => {
   const onClick = () => onClickInput(index);
 
   return (
-    <Chip
-      style={style}
-      onClick={onClick}
-      onKeyDown={() => {}}
-      label={textToUpper(text)}
-    />
+    <Chip onClick={onClick} onKeyDown={() => {}} label={textToUpper(text)} />
   );
 };
 

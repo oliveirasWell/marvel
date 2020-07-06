@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
+import NotFound from 'pages/NotFound';
+import { ErrorBoundary } from 'components/ErrorBoundary';
 import { routes } from '../routes';
-import NotFound from '../../pages/NotFound/NotFound';
 
 export const RoutesList = () => (
   <ErrorBoundary>

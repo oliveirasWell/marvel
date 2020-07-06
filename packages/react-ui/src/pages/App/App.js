@@ -9,13 +9,13 @@ import { useTheme } from '@material-ui/styles';
 import { useMediaQuery } from '@material-ui/core';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import { routes } from '../../routes/routes';
-import { Loading } from '../../components/Loading';
-import { RoutesList } from '../../routes/RoutesList/RoutesList';
-import { useWindowSize } from '../../hooks/useWindowSize';
+import { Loading } from 'components/Loading';
+import { MenuDrawer } from 'components/MenuDrawer';
+import { useWindowSize } from 'hooks/useWindowSize';
+import { routes } from 'routes/routes';
+import { RoutesList } from 'routes/RoutesList/RoutesList';
 import logo from '../../assets/marvel-logo.png';
 import { getCurrentNavigation } from './AppFunctions';
-import { MenuDrawer } from '../../components/MenuDrawer';
 import { AppBottomNav } from './AppBottomNav';
 
 const MainDiv = styled.div`

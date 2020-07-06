@@ -4,13 +4,14 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import styled from 'styled-components';
-import { useComicById } from '../../hooks/useComicById';
-import { LoadingTernary } from '../../components/LoadingTernary';
-import { routes } from '../../routes/routes';
-import { ComicImages } from '../../components/ComicImages';
+import { useComicById } from 'hooks/useComicById';
+import { LoadingTernary } from 'components/LoadingTernary';
+import { routes } from 'routes/routes';
+import { ComicImages } from 'components/ComicImages';
 import { ComicCreators } from './ComicCreators/ComicCreators';
 import { ComicCharacters } from './ComicCharacters.js/ComicCharacters';
 
+// TODO:FIXME - remove from grid or create a new div
 const style = { padding: 16 };
 
 const DetailImg = styled.img`
@@ -76,4 +77,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export { Details };

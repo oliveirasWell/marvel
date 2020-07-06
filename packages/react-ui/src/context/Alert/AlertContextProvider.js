@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Alert } from '../../components/Alert';
+import { Alert } from 'components/Alert';
 import { AlertContext } from './AlertContext';
 
 const AlertContextProvider = ({ children }) => {

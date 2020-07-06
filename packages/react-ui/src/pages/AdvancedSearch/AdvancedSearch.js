@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { useCharactersPaginate } from '../../hooks/useCharactersPaginate';
-import { LoadingTernary } from '../../components/LoadingTernary';
-import { SearchBar } from '../../components/SearchBar/SearchBar';
-import { PaginationHeader } from '../../components/PaginationHeader/PaginationHeader';
+import { LoadingTernary } from 'components/LoadingTernary';
+import { SearchBar } from 'components/SearchBar';
+import { PaginationHeader } from 'components/PaginationHeader';
+import { useCharactersPaginate } from 'hooks/useCharactersPaginate';
 import { CharacterTable } from './CharacterTable/CharacterTable';
 
 const AdvancedSearch = () => {
@@ -72,4 +72,3 @@ const AdvancedSearch = () => {
 };
 
 export { AdvancedSearch };
-export default AdvancedSearch;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getNodeText, render } from '@testing-library/react';
+import { routes } from 'routes/routes';
 import { Menu } from './Menu';
-import { routes } from '../../routes/routes';
 import { MockedProvidersTest } from '../../utils/test/MockThemeTest';
 
 test('renders only menus item that `menu` field are true  ', () => {

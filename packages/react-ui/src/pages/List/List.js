@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import { useComicsPaginate } from '../../hooks/useComicsPaginate';
-import { LoadingTernary } from '../../components/LoadingTernary';
-import { routes } from '../../routes/routes';
-import { SearchBar } from '../../components/SearchBar/SearchBar';
+import { LoadingTernary } from 'components/LoadingTernary';
+import { SearchBar } from 'components/SearchBar/SearchBar';
+import { PaginationHeader } from 'components/PaginationHeader/PaginationHeader';
+import { useComicsPaginate } from 'hooks/useComicsPaginate';
+import { useTheme } from '@material-ui/styles';
+import { useMediaQuery } from '@material-ui/core';
+import { routes } from 'routes/routes';
 import { ComicCard } from './ComicCard';
-import { PaginationHeader } from '../../components/PaginationHeader/PaginationHeader';
 import { filterResults } from './listFunctions';
 
 const List = () => {
   const history = useHistory();
   const [comics, setComics] = useState([]);
   const [filter, setFilter] = useState('');
+  const theme = useTheme();
+  const mobile = !useMediaQuery(theme.breakpoints.up('sm'));
+  // FIXME remove to styled-component
+  const style = mobile ? { overflow: 'hide' } : {};
 
   const {
     results,
@@ -43,7 +49,7 @@ const List = () => {
   }, [results, filter]);
 
   return (
-    <Grid container spacing={0}>
+    <Grid container spacing={0} style={style}>
       <Grid item xs={12} xl={6} md={6} id="item-header">
         <SearchBar
           value={filter}
@@ -90,4 +96,4 @@ const List = () => {
   );
 };
 
-export default List;
+export { List };

@@ -1,12 +1,10 @@
 import { lazy } from 'react';
-import NotFound from '../pages/NotFound/NotFound';
+import NotFound from '../pages/NotFound';
 
-const List = lazy(() => import('../pages/List/List'));
-const Home = lazy(() => import('../pages/Home/Home'));
-const Details = lazy(() => import('../pages/Details/Details'));
-const AdvancedSearch = lazy(() =>
-  import('../pages/AdvancedSearch/AdvancedSearch')
-);
+const List = lazy(() => import('../pages/List'));
+const Home = lazy(() => import('../pages/Home'));
+const Details = lazy(() => import('../pages/Details'));
+const AdvancedSearch = lazy(() => import('../pages/AdvancedSearch'));
 
 export const routes = {
   HOME: {

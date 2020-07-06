@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
-import { Menu } from '../../components/Menu';
+import { Menu } from 'components/Menu';
 
 const HomeContainer = styled.div`
   margin: ${props => props?.theme && props.theme.spacing(2)}px;
@@ -40,4 +40,4 @@ const Home = () => (
   </HomeContainer>
 );
 
-export default Home;
+export { Home };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { routes } from '../../routes/routes';
+import { routes } from 'routes/routes';
 
 const MenuItem = styled.div`
   font-size: 1.25rem;

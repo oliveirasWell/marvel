@@ -7,7 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { EmptyState } from '../../../components/EmptyState/EmptyState';
+import { EmptyState } from 'components/EmptyState';
 import { CharacterRowPure } from './CharacterRow';
 
 const StyledTable = styled(Table)`

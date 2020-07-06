@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AlertContext } from '../context/Alert/AlertContext';
+import { AlertContext } from 'context/Alert/AlertContext';
 import { MarvelComicsApiService } from '../services/MarvelComicsApiService';
 
 export function useComicById({ id }) {

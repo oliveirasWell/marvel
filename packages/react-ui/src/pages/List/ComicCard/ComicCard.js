@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { ComicImages } from '../../../components/ComicImages/ComicImages';
+import { ComicImages } from 'components/ComicImages';
 
 const IconButtonStyled = styled(({ expandedStyled, ...props }) => (
   <IconButtonMui {...props} />
@@ -85,7 +85,7 @@ const ComicCard = React.memo(
           <StylesProvider injectFirst>
             <TitleImage imageSrc={imageSrc}>
               <TitleImageGradient>
-                <Title variant="h4" component="div">
+                <Title variant="h4" component="div" onClick={onClick}>
                   {title}
                 </Title>
               </TitleImageGradient>

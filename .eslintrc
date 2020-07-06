@@ -5,6 +5,18 @@
     "plugin:mdx/recommended",
     "@tecsinapse/tecsinapse-js"
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "packages/shared/node_modules",
+          "packages/react-ui/node_modules",
+          "packages/react-ui/src"
+        ]
+      }
+    }
+  },
   "rules": {
     "prettier/prettier": "error",
     "import/no-cycle": "off",
