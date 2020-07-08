@@ -11,7 +11,7 @@
 # Pre-requisitos
 
 - REACT_APP_API_PUBLIC_KEY - Generate [here](https://developer.marvel.com)
-- REACT_APP_API_PUBLIC_KEY - Optional Sentry [here](http://sentry.io/)
+- REACT_APP_SENTRY_TOKEN - Optional Sentry [here](http://sentry.io/)
 - nodejs >= 14
 - yarn > 1.12
 - Docker (Optional)
