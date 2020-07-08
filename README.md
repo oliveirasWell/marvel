@@ -62,11 +62,17 @@ Um projeto react,
 
 ## TODOs and FIXME
 
+### FIXME
  - Foi desabilitado a barra de rolagem, estoou forcando o scroll do mouse ou então swipe
  - Refactor em alguns hooks
- - Add useCallback em alguns lugares
- - FIXME nos input uncontrolled no react strict 
+ - Add useCallback, useMemo em alguns lugares
+ - FIXME no problema de findNode no `<React.strict/>` 
 
+### TODOs
+
+ - Google Analytics
+ - Typescript
+ - Testes com Cypress
 
 #### Rodando
 
