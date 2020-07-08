@@ -19,7 +19,7 @@
 
 # Descrição
 
-Este projeto contém uma implementação da API da Marvel de quadrinhos, em que podemos listar o total de quadrinhos, e filtrar a busca já realizada por personagem, nome do quadrinho e autor, também é possível realizar uma busca de heróis. Sistema foi construido mobile first
+Este projeto contém uma implementação da API da Marvel de quadrinhos, em que podemos listar o total de quadrinhos, e filtrar a busca já realizada por personagem, nome do quadrinho e autor, também é possível realizar uma busca de heróis. Sistema foi construido mobile first, porém responsivo.
 
 Este projeto foi criadoo utilizando yarn packages, este possui testes, eslint, babel e storybook disponíveis para todos os projetos, da forma que está separado em dois pacotes principais:
 
@@ -32,8 +32,21 @@ Este projeto foi criadoo utilizando yarn packages, este possui testes, eslint, b
 
 ### well-dev-playground-react-ui
 
-Um projeto react, utilizando quase que estritamente hooks
+Um projeto react, 
+- utilizando quase que estritamente componentes funcionais e hooks
+- `material ui` como framework de componentes, styled components ou styles inline como constantes
+- Componentes funcionais em sua grande maioria, somente error boundary como class
+- React router com separação das rotas via lazy
+- Classes services separadas
+- Absolute imports
+- eslint, pritter e pre commit hooks
+- Storybook
+- Documentationjs
+- Testes com jest
+- Cypress (beta) nenhum teste implementado ainda
+- Docker (beta)
 
+#### Estrutura
 - envs - Exemplo de arquivo env
 - src
   - assets - Images e etc
@@ -46,13 +59,6 @@ Um projeto react, utilizando quase que estritamente hooks
   - services - serviços de api
   - utils - etc
   - .env - Arquivo necessário com as properties, pode
-
-- Sobre a arquitetura, sistema usa material ui como framework de componentes
-- Componentes funcionais em sua grande maioria, somente error boundary como class
-- eslint, pritter e pre commit hooks
-- React router com separação das rotas via lazy
-- material-ui Styles utilizando make styles, porém degrada o desempenho, logo migrando para styled components ou styles inline como constantes.
-- Classes services separadas
 
 ## TODOs and FIXME
 
