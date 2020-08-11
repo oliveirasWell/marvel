@@ -96,6 +96,14 @@ Foram criados testes utilizando jest
 
 1. Execute `yarn jest`
 
+#### Rodando testes e2e
+
+Utilizamos Cypress para criação de testes e2e, sua implementação está na pasta `cypress/integration`
+
+Para abrir a suite do cypress execute `yarn cy:open`
+
+Para rodar todos os testes localmente sem a interface do cypress execute `yarn cy:run`
+
 #### Rodando Docker (beta)
 
 A interface react pode ser utilizada com docker, utilizando o comando `docker-compose up -d`

@@ -95,6 +95,8 @@
     "hooks": "bash .git/hooks/pre-commit",
     "lint:staged": "lint-staged",
     "test": "jest --coverage",
+    "test:e2e": "npx cypress run  --browser electron",
+    "cy:open": "cypress open",
     "web:start": "yarn workspace well-dev-playground-react-ui start",
     "web:firebase:deploy": "yarn workspace well-dev-playground-react-ui build && npx firebase deploy --only hosting",
     "coveralls": "jest --coverage && cat ./.jest-coverage/lcov.info | coveralls"
