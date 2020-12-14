@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { AlertContext } from 'context/Alert/AlertContext';
-import { MarvelComicsApiService } from '../services/MarvelComicsApiService';
+
+import { useQuery } from 'react-query';
+import { ROOT_MARVEL_API_URL } from '../constants/apiConstants';
 
 export function useComicById({ id }) {
   const { addAlert } = React.useContext(AlertContext);
-  const [result, setResult] = useState(undefined);
-  const [error, setError] = useState(undefined);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true);
-    MarvelComicsApiService.getById(id)
-      .then(response => setResult(response?.results[0]))
-      .catch(e => setError(e))
-      .finally(() => setLoading(false));
-  }, [id]);
+  const {
+    isLoading: loading,
+    error,
+    data: { data: { results } = {} } = {},
+  } = useQuery('repoData', () =>
+    fetch(
+      `${ROOT_MARVEL_API_URL}/comics/${id}?apikey=${process.env.REACT_APP_API_PUBLIC_KEY}`
+    ).then(res => res.json())
+  );
 
   useEffect(() => {
     if (error) {
@@ -23,7 +24,7 @@ export function useComicById({ id }) {
   }, [error, addAlert]);
 
   return {
-    result,
+    result: results && results[0],
     loading,
     error,
   };

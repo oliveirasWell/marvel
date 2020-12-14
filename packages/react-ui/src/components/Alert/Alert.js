@@ -8,11 +8,13 @@ const Chip = styled(ChipMui)`
   background-color: red;
 `;
 
+const onKeyDown = () => {};
+
 export const Alert = ({ text = 'Alerta', onClick: onClickInput, index }) => {
   const onClick = () => onClickInput(index);
 
   return (
-    <Chip onClick={onClick} onKeyDown={() => {}} label={textToUpper(text)} />
+    <Chip onClick={onClick} onKeyDown={onKeyDown} label={textToUpper(text)} />
   );
 };
 

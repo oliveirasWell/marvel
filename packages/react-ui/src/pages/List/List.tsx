@@ -6,7 +6,7 @@ import { SearchBar } from 'components/SearchBar/SearchBar';
 import { PaginationHeader } from 'components/PaginationHeader/PaginationHeader';
 import { useComicsPaginate } from 'hooks/useComicsPaginate';
 import { useTheme } from '@material-ui/styles';
-import { useMediaQuery } from '@material-ui/core';
+import { Theme, useMediaQuery } from '@material-ui/core';
 import { routes } from 'routes/routes';
 import { ComicCard } from './ComicCard';
 import { filterResults } from './listFunctions';
@@ -15,7 +15,7 @@ const List = () => {
   const history = useHistory();
   const [comics, setComics] = useState([]);
   const [filter, setFilter] = useState('');
-  const theme = useTheme();
+  const theme: Theme = useTheme();
   const mobile = !useMediaQuery(theme.breakpoints.up('sm'));
   // FIXME remove to styled-component
   const style = mobile ? { overflow: 'hide' } : {};
@@ -29,10 +29,12 @@ const List = () => {
     getPrevious,
   } = useComicsPaginate();
 
-  const handleChangeInput = event => {
-    setFilter(event.target.value);
+  // @ts-ignore
+  const handleChangeInput = ({ target }) => {
+    setFilter(target.value);
   };
 
+  // @ts-ignore
   const _handleKeyDown = e => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -74,12 +76,14 @@ const List = () => {
         <LoadingTernary loading={loading}>
           <Grid container spacing={0}>
             {!loading &&
-              (comics || []).map(comic => (
+              (comics || []).map((comic: any) => (
                 <Grid item xs={12} xl={3} md={3} key={`${comic.id}`}>
                   <ComicCard
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    //@ts-ignore
                     title={comic.title}
                     authors={(comic?.creators?.items ?? [])
-                      .map(({ name }) => name)
+                      .map(({ name }: { name: string }) => name)
                       .join(', ')}
                     imageSrc={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`}
                     onClick={() => routes.DETAILS.redirect(history, comic.id)}

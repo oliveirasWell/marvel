@@ -6,7 +6,10 @@ import { routes } from 'routes/routes';
 const MenuItem = styled.div`
   font-size: 1.25rem;
   margin-top: ${({ theme }) => theme.spacing(1)}px;
-  font-weight: ${({ fontWeight }) => fontWeight};
+  font-weight: ${
+    // @ts-ignore
+    ({ fontWeight }) => fontWeight
+  };
 `;
 
 const Menu = () => {
@@ -25,6 +28,7 @@ const Menu = () => {
               onClick={() => route.redirect(history)}
               role="menuitem"
               tabIndex={index}
+              // @ts-ignore
               fontWeight={300 + 200 * index}
             >
               {title}
