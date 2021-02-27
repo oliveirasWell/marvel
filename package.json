@@ -98,7 +98,7 @@
   "scripts": {
     "storybook:build": "build-storybook -c .storybook -s ./storybook-public -o docs/",
     "storybook:start": "start-storybook -p 5555",
-    "eslint:fix": "npx eslint packages/react-ui/src packages/shared/src --ext .js --fix",
+    "eslint:fix": "yarn eslint packages/react-ui/src packages/shared/src --ext .js --fix",
     "analyze": "npx source-map-explorer 'build/static/js/*.js'",
     "build:docs:html": "documentation --github --config documentation.yml --babel=./babel.config.js build packages/* -f html -o docs",
     "docs:serve": "documentation serve packages/* --watch --github --config documentation.yml --babel=./babel.config.js",
