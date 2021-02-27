@@ -14,7 +14,11 @@ module.exports = function presets(api) {
   plugins.push('@babel/plugin-syntax-dynamic-import');
 
   return {
-    presets: ['@babel/preset-react', ['@babel/preset-env', envConfig]],
+    presets: [
+      '@babel/preset-react',
+      '@babel/preset-typescript',
+      ['@babel/preset-env', envConfig],
+    ],
     plugins,
   };
 };

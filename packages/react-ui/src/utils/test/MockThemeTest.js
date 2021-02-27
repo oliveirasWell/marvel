@@ -1,9 +1,9 @@
 import React from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { MemoryRouter } from 'react-router-dom';
-import { StyledComponentsThemeProvider } from 'components/styled/StyledComponentsThemeProvider';
-import { AlertContextProvider } from 'context/Alert/AlertContextProvider';
 import theme from '../theme';
+import { AlertContextProvider } from '../../context/Alert/AlertContextProvider';
+import { StyledComponentsThemeProvider } from '../../providers/StyledComponentsThemeProvider';
 
 const MockedProvidersTest = ({ children }) => (
   <AlertContextProvider>

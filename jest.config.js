@@ -1,6 +1,7 @@
 module.exports = {
   cacheDirectory: '.jest-cache',
   coverageDirectory: '.jest-coverage',
+  sourceRoot: './packages/src',
   coveragePathIgnorePatterns: [
     '<rootDir>/packages/(?:.+?)/lib/',
     '<rootDir>/packages/(?:.+?)/node_modules/',
@@ -31,7 +32,7 @@ module.exports = {
     '\\*resultsTestResource.js$',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
-  moduleFileExtensions: ['json', 'js'],
+  moduleFileExtensions: ['json', 'js', 'ts', 'tsx'],
   moduleDirectories: [
     'node_modules',
     'packages/shared/node_modules',

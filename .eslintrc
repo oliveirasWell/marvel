@@ -1,9 +1,16 @@
 {
-  "plugins": ["prettier", "react-hooks"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "prettier",
+    "react-hooks",
+    "@typescript-eslint"
+  ],
   "extends": [
     "react-app",
     "plugin:mdx/recommended",
-    "@tecsinapse/tecsinapse-js"
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
   ],
   "settings": {
     "import/resolver": {
@@ -18,6 +25,10 @@
     }
   },
   "rules": {
+    // note you must disable the base rule as it can report incorrect errors
+    "no-use-before-define": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
     "prettier/prettier": "error",
     "import/no-cycle": "off",
     "react/jsx-props-no-spreading": "off",
@@ -28,7 +39,12 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx", ".mdx"]
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".tsx",
+          ".mdx"
+        ]
       }
     ]
   }

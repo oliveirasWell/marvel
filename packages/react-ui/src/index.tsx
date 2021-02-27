@@ -9,24 +9,29 @@ import * as serviceWorker from './serviceWorker';
 import { AlertContextProvider } from './context/Alert/AlertContextProvider';
 import theme from './utils/theme';
 import './index.css';
-import { StyledComponentsThemeProvider } from './components/styled/StyledComponentsThemeProvider';
+import { QueryCache, ReactQueryCacheProvider } from 'react-query';
+import { StyledComponentsThemeProvider } from './providers/StyledComponentsThemeProvider';
 
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_TOKEN,
 });
 
+const queryCache = new QueryCache();
+
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <AlertContextProvider>
-        <Router>
-          <StyledComponentsThemeProvider>
-            <App />
-          </StyledComponentsThemeProvider>
-        </Router>
-      </AlertContextProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
+  <ReactQueryCacheProvider queryCache={queryCache}>
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <AlertContextProvider>
+          <Router>
+            <StyledComponentsThemeProvider>
+              <App />
+            </StyledComponentsThemeProvider>
+          </Router>
+        </AlertContextProvider>
+      </ThemeProvider>
+    </React.StrictMode>
+  </ReactQueryCacheProvider>,
   document.getElementById('root')
 );
 
