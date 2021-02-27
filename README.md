@@ -11,7 +11,7 @@
 # Pre-requisitos
 
 - REACT_APP_API_PUBLIC_KEY - Generate [here](https://developer.marvel.com)
-- REACT_APP_API_PUBLIC_KEY - Optional Sentry [here](http://sentry.io/)
+- REACT_APP_SENTRY_TOKEN - Optional Sentry [here](http://sentry.io/)
 - nodejs >= 14
 - yarn > 1.12
 - Docker (Optional)
@@ -95,6 +95,14 @@ Para todos os comandos é necessárioo primeiro que xecute `yarn` na raiz do pro
 Foram criados testes utilizando jest
 
 1. Execute `yarn jest`
+
+#### Rodando testes e2e
+
+Utilizamos Cypress para criação de testes e2e, sua implementação está na pasta `cypress/integration`
+
+Para abrir a suite do cypress execute `yarn cy:open`
+
+Para rodar todos os testes localmente sem a interface do cypress execute `yarn cy:run`
 
 #### Rodando Docker (beta)
 

@@ -99,7 +99,7 @@
   "scripts": {
     "storybook:build": "build-storybook -c .storybook -s ./storybook-public -o docs/",
     "storybook:start": "start-storybook -p 5555",
-    "eslint:fix": "npx eslint packages/react-ui/src packages/shared/src --ext .js --fix",
+    "eslint:fix": "yarn eslint packages/react-ui/src packages/shared/src --ext .js --fix",
     "analyze": "npx source-map-explorer 'build/static/js/*.js'",
     "build:docs:html": "documentation --github --config documentation.yml --babel=./babel.config.js build packages/* -f html -o docs",
     "docs:serve": "documentation serve packages/* --watch --github --config documentation.yml --babel=./babel.config.js",
@@ -107,6 +107,8 @@
     "hooks": "bash .git/hooks/pre-commit",
     "lint:staged": "lint-staged",
     "test": "jest --coverage",
+    "test:e2e": "npx cypress run  --browser electron",
+    "cy:open": "cypress open",
     "web:start": "yarn workspace well-dev-playground-react-ui start",
     "web:firebase:deploy": "yarn workspace well-dev-playground-react-ui build && npx firebase deploy --only hosting",
     "coveralls": "jest --coverage && cat ./.jest-coverage/lcov.info | coveralls",
